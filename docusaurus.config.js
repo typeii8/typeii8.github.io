@@ -9,7 +9,7 @@ const config = {
   title: 'Zoe',
   tagline: 'Dinosaurs are cool',
   url: 'https://typeii8.github.io',
-  baseUrl: '/test/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -17,7 +17,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'typeii8', // Usually your GitHub org/user name.
-  projectName: 'test', // Usually your repo name.
+  projectName: 'typeii8.github.io', // Usually your repo name.
   trailingSlash: false,
   deploymentBranch: 'gh-pages',
 

@@ -9,7 +9,7 @@ const config = {
   title: 'Zoe',
   tagline: 'Dinosaurs are cool',
   url: 'https://typeii8.github.io',
-  baseUrl: '/',
+  baseUrl: '/test/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -17,8 +17,9 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'typeii8', // Usually your GitHub org/user name.
-  projectName: 'typeii8.github.io', // Usually your repo name.
+  projectName: 'test', // Usually your repo name.
   trailingSlash: false,
+  deploymentBranch: 'main',
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want

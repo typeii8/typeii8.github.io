@@ -1,0 +1,47 @@
+---
+title: About Me
+description: Everything about me
+hide_table_of_contents: false
+---
+
+# About Me
+
+Zoe Huang
+
+F2E x Sweetholic x Backpacker
+
+現職前端工程師，在此之前是一位UI設計，專注於打造易於使用的產品，喜歡思考如何為產品提供適合的解決方案
+
+Front-end engineer with over three years of experience and a strong UI/UX design foundation. Focus on making products more user-friendly, solving practical problems for products, and addressing customer pain points.
+
+[Linkedin](https://www.linkedin.com/in/zoehuang) | [GitHub](https://github.com/typeii8) | [Twitter](https://twitter.com/typeii8) | [500px](https://500px.com/p/typeii8) 
+
+
+## Skill
+
+- Vue3 / Vuex / Vue Router / Vite
+- JavaScript ES6
+- TailwindCSS
+- CSS3/SCSS
+- Sketch / Figma
+- Scrum
+
+
+## Contact
+
+[Mail](mailto:typeii8@gmail.com)
+
+##
+
+PMI Agile Certified Practitioner (PMI-ACP)®
+
+![](/img/pmi-acp.png)
+
+https://www.credly.com/badges/f9589b5d-63ff-4cd5-940a-657f0dbee001/public_url
+
+## Hobbies
+
+- Travel
+- Sweet and Coffee
+- Cooking
+- Music

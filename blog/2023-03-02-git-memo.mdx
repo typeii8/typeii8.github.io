@@ -1,0 +1,39 @@
+---
+slug: git-memo
+title: Git Memo
+authors: zoe
+tags: [git]
+---
+
+## git hooks post-receive shell
+
+```shell
+#!/bin/sh
+git_folder=/usr/local/apache-tomcat-8.5.46-9487/webapps/repo
+tomcat_folder=/usr/local/apache-tomcat-8.5.46-9487/webapps/ROOT
+rm -rf ${git_folder}
+mkdir ${git_folder}
+cd ${git_folder}
+git --work-tree=${git_folder} --git-dir=/var/repo/qa.git checkout -f master
+rm -rf src
+cp -r ${git_folder}/dist/image/ ${tomcat_folder}/
+cp -r ${git_folder}/dist/css/ ${tomcat_folder}/
+cp ${git_folder}/dist/js/main.js ${tomcat_folder}/js/
+```
+
+---
+
+## Git 大小寫設定
+
+關閉單一專案的大小寫忽略設定 (等同於開啟大小寫偵測)
+
+```shell
+$ git config --local core.ignorecase false
+```
+
+開啟單一專案的大小寫忽略設定 (等同於關閉大小寫偵測)
+
+```shell
+$ git config --local core.ignorecase true
+```
+

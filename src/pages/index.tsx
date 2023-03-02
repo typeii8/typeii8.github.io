@@ -12,7 +12,9 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
+        {/* <h1 className="hero__title">{siteConfig.title}</h1> */}
+        <h1 className="hero__title">Hi Zoe, hello world. </h1>
+
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         {/* <div className={styles.buttons}>
           <Link
@@ -33,9 +35,9 @@ export default function Home(): JSX.Element {
       title={`Hello World from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
-      <main>
+      {/* <main>
         <HomepageFeatures />
-      </main>
+      </main> */}
     </Layout>
   );
 }

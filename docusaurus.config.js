@@ -54,6 +54,9 @@ const config = {
         sitemap: {
           changefreq: 'always'
         },
+        gtag: {
+          trackingID: 'G-6GGVD984B6'
+        }
       }),
     ],
   ],
@@ -91,15 +94,15 @@ const config = {
       footer: {
         style: 'dark',
         links: [
-          // {
-          //   title: 'Docs',
-          //   items: [
-          //     {
-          //       label: 'Tutorial',
-          //       to: '/docs/intro',
-          //     },
-          //   ],
-          // },
+          {
+            title: 'Docs',
+            items: [
+              {
+                label: 'Tutorial',
+                to: '/docs/intro',
+              },
+            ],
+          },
           {
             title: 'Social Media',
             items: [
@@ -125,7 +128,7 @@ const config = {
                 to: '/blog',
               },
               {
-                label: 'Contact Me',
+                label: 'Contact',
                 href: 'mailto:typeii8@gmail.com',
               },
             ],

@@ -11,7 +11,7 @@
   background-size: cover;
   color: #FFFFFF;
   text-align: center;
-  text-shadow: 1px 1px #312D0F, 2px 2px #7B7027;
+  text-shadow: 0 0 2px #dddddd, 2px 2px #7B7027;
 }
 
 @media screen and (max-width: 996px) {

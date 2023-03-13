@@ -81,7 +81,7 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Series of articles',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
@@ -95,12 +95,16 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Article',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'CSS',
+                to: '/docs/category/css',
               },
+              {
+                label: 'Optimization',
+                to: '/docs/category/optimization',
+              }
             ],
           },
           {

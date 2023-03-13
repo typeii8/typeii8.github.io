@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Zoe Huang',
-  tagline: 'F2E x Sweetholic x Backpacker x INTJ',
+  tagline: 'F2E x Sweetholic x Backpacker',
   url: 'https://typeii8.github.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',

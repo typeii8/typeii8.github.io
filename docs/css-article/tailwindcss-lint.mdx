@@ -8,13 +8,31 @@ tags:
 draft: true
 ---
 
-# Create a Page
+# TailwindCSS x Stylelint x Prettier
 
-Add **Markdown or React** files to `src/pages` to create a **standalone page**:
+在使用 TailwindCSS 進行開發時，常需要在一個 DOM 上套用很多 CSS class，然後最後程式碼就會變成：
 
-- `src/pages/index.js` → `localhost:3000/`
-- `src/pages/foo.md` → `localhost:3000/foo`
-- `src/pages/foo/bar.js` → `localhost:3000/foo/bar`
+```
+補例子
+```
+
+對我來說，實在滿難閱讀和維護，研究後決定搭配使用 Stylelint 和 Prettier，用了以後的成果：
+
+```
+補例子
+```
+
+## 目的
+
+- 避免因為眼花沒看到，而重複套用 CSS class (疊加太多樣式時，很常會發生)
+- 友善分類，易於閱讀和修改
+
+## 環境
+
+https://github.com/tailwindlabs/prettier-plugin-tailwindcss
+https://tailwindcss.com/docs/editor-setup#automatic-class-sorting-with-prettier
+https://tailwindcss.com/blog/automatic-class-sorting-with-prettier
+
 
 ## Create your first React Page
 

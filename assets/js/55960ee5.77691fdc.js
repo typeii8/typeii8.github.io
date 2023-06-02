@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[4121],{8070:s=>{s.exports=JSON.parse('[{"label":"TailwindCSS","permalink":"/docs/tags/tailwind-css","count":1},{"label":"CSS","permalink":"/docs/tags/css","count":1}]')}}]);

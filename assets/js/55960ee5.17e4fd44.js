@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkzoe_blog=self.webpackChunkzoe_blog||[]).push([[4121],{8070:l=>{l.exports=JSON.parse('[{"label":"Stylelint","permalink":"/docs/tags/stylelint","count":2},{"label":"CSS","permalink":"/docs/tags/css","count":2},{"label":"TailwindCSS","permalink":"/docs/tags/tailwind-css","count":1}]')}}]);

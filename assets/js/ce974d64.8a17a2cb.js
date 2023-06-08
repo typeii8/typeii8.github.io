@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkzoe_blog=self.webpackChunkzoe_blog||[]).push([[9274],{7373:s=>{s.exports=JSON.parse('{"label":"css","permalink":"/blog/tags/css","allTagsPath":"/blog/tags","count":1}')}}]);

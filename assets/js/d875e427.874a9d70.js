@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkzoe_blog=self.webpackChunkzoe_blog||[]).push([[654],{9545:e=>{e.exports=JSON.parse('{"label":"resource","permalink":"/blog/tags/resource","allTagsPath":"/blog/tags","count":3}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkzoe_blog=self.webpackChunkzoe_blog||[]).push([[9183],{8349:e=>{e.exports=JSON.parse('{"label":"uiux","permalink":"/blog/tags/uiux","allTagsPath":"/blog/tags","count":1}')}}]);

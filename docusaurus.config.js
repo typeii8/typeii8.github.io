@@ -12,7 +12,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/gizmo.png',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -65,7 +65,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       /** You can configure a default image that will be used for your meta tag, */
-      image: 'img/docusaurus.png',
+      image: 'img/gizmo.png',
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: true
@@ -73,8 +73,8 @@ const config = {
       navbar: {
         title: '',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Hi Zoe, hello world. Logo',
+          src: 'img/gizmo.svg',
         },
         items: [
           {

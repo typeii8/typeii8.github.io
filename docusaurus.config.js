@@ -94,19 +94,19 @@ const config = {
       footer: {
         style: 'dark',
         links: [
-          // {
-          //   title: 'Article',
-          //   items: [
-          //     {
-          //       label: 'CSS',
-          //       to: '/docs/category/css',
-          //     },
-          //     {
-          //       label: 'Optimization',
-          //       to: '/docs/category/optimization',
-          //     }
-          //   ],
-          // },
+          {
+            title: 'Articles',
+            items: [
+              {
+                label: 'CSS',
+                to: '/docs/category/css',
+              },
+              // {
+              //   label: 'Optimization',
+              //   to: '/docs/category/optimization',
+              // }
+            ],
+          },
           {
             title: 'Social Media',
             items: [

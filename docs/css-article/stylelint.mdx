@@ -37,7 +37,8 @@ draft: false
 * 這邊複寫不下去了只能加 `!important`
 * 這個屬性到底是從哪個 class 開始被覆寫的？
 
-因為對於開發實在有些困擾，所以想要用 Stylelint 想要解決以上的困擾，
+因為對於開發實在有些困擾，研究後想嘗試使用 Stylelint，
+透過自動檢查 CSS 是否符合相關規範，來解決上述之困擾，
 
 而在選用一個新工具之前，建議可以先釐清要處理的議題有哪些，比較不會陷入 "因為用而用" 的盲點。
 
@@ -60,7 +61,7 @@ draft: false
 
 ## 規範和實例
 
-要從零開始打造一份良好的 CSS 規範實在有點辛苦，
+從零開始打造一份良好的 CSS 規範實在有點辛苦，
 
 最省力的作法往往還是站在巨人的肩膀上繼續前行，
 
@@ -136,7 +137,7 @@ draft: false
 
 CSS 巢狀結構寫的太深，會造成耦合性太高而難以重複使用，
 
-一般來說，建議不要超過 3 / 5 層
+一般來說，建議不要超過 3 / 5 層，此規則建議也是需要根據專案內使用的 CSS 設計模式相互搭配。
 
 ```css
   .page-container {
@@ -147,6 +148,10 @@ CSS 巢狀結構寫的太深，會造成耦合性太高而難以重複使用，
     }
   }
 ```
+
+通常巢狀成這樣的時候，不僅難以複用，也常會因為需求更動導致 CSS 壞掉，
+
+寫之前需要好好先思考一下 ：）
 
 ```css
   .page-container > .content > .profile span:first-child {
@@ -172,9 +177,9 @@ rgba(0, 0, 0, .5)
 
 ## 小結
 
-- 設定可遵照主流，可客製化，可例外
-- 事在人為，工具只是輔助
-- 達到易閱讀利於協作、減少錯誤發生的機會和最佳化 CSS 檔案
+- 設定可遵照主流、可客製化、可例外。但太多例外等於沒有例外，要小心處理
+- 事在人為，工具只是輔助，協作者若開發習慣不好，依然會導致問題
+- 透過自動化檢查的機制，可朝向易閱讀利於協作、減少錯誤發生的機會和最佳化 CSS 檔案的目標前進
 
 
 ## 參考資料
@@ -183,9 +188,9 @@ rgba(0, 0, 0, .5)
 - [Stylelint plugins list](https://github.com/stylelint/awesome-stylelint)
 - [Stylelint rules](https://stylelint.io/user-guide/rules/list/)
 
-如果想要了解其他人對於 CSS 的應用和新趨勢，推薦可以逛逛以下網站：
+若想要了解其他人對於 CSS 的應用和新趨勢，推薦可以逛：
 
-- [State of CSS 2021](https://2021.stateofcss.com/en-US/)
+- [State of CSS 2022](https://2022.stateofcss.com/en-US/)
 - [State of CSS 2022 from Google](https://web.dev/state-of-css-2022/)
 - [How browsers work from Google](https://web.dev/howbrowserswork/)
 

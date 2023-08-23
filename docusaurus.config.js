@@ -103,6 +103,10 @@ const config = {
                 label: 'CSS',
                 to: '/docs/category/css',
               },
+              {
+                label: 'Vue',
+                to: '/docs/category/vue',
+              },
               // {
               //   label: 'Optimization',
               //   to: '/docs/category/optimization',

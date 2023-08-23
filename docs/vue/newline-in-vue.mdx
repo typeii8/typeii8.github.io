@@ -3,8 +3,9 @@ sidebar_position: 1
 id: newline-in-vue
 title: 在 Vue template 內生成換行的方式
 tags:
-  - Vue
   - CSS
+  - Vue
+  - JavaScript
 draft: true
 ---
 
@@ -12,21 +13,21 @@ draft: true
 
 ## 前提
 
-在 Vue 的父子元件之間進行 props，父元件傳到子元件的 `String` ，希望可以自行決定何處需換行，但需避免使用 `<br>`
+在 Vue 中，父元件 props 進到子元件的 `String`，希望可以自行決定何處需換行，但需避免使用 `<br>`
 
 
 ## 解決方式
 
 props 進子元件的 `String`：
 ```js
-const displayText1 = "Lorem ipsum dolor sit amet, \n\n consectetur adipiscing elit/";
+const displayText1 = "Lorem ipsum dolor sit amet, \n\n consectetur adipiscing elit.";
 const displayText2 = `
 Lorem ipsum  
 Lorem ipsum
 `;
 ```
 
-template 的部分：
+Vue template：
 ```html
 <pre>
   {{ props.displayText }}
@@ -36,16 +37,23 @@ template 的部分：
 CSS 屬性：
 ```css
 pre {
-  white-space: pre-line; /* Modern browsers */
-  word-wrap: break-word; /* IE 5.5-7 */
+  white-space: pre-line;
 }
 ```
+
+## 心得
+
+當初接到的需求是，某些傳進子元件的字串可能會由非工程師的同仁編輯，且有特定的換行需求。
+
+查找了網路後，最後選定套用上述方式，大方向是想盡量避免使用 `<br>` 和 JS 來處理換行，欲運用最少的資源來處理。發現可以使用 `<pre>` 搭配 CSS 處理，覺得滿很有趣的。
+
+在之前的開發經驗中，幾乎沒有使用過 `<pre>`，意外有種發現新大陸的感覺。一個問題可以有非常多不同的處理方式，每一種方案都需要取捨，就看產品需求和最想避免的坑是什麼而定了。
 
 
 
 ## 參考資料
 
-相關屬性可參考：
+相關屬性解釋可參考：
 
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre
 - https://developer.mozilla.org/en-US/docs/Web/CSS/white-space

@@ -1,0 +1,123 @@
+---
+sidebar_position: 2
+id: props-css-variables
+title: 在父子元件間傳遞 CSS variables
+tags:
+  - CSS
+  - Vue
+  - JavaScript
+draft: false
+---
+
+# 在父子元件間傳遞 CSS variables
+
+## 前提
+
+為統一管理前端專案內的色系色碼和名稱，在專案內創建一支 CSS 存放 CSS variables，需要用到顏色時一律指定 CSS variables 而非 HEX 色碼。
+
+variable.css：
+
+```css
+:root {
+  --primary-100: #F5F3E6;
+  --primary-200: #ECE6CE;
+  ...
+}
+```
+
+## 需求
+
+欲在父元件傳入指定之 CSS variable 到 子元件，需使用預先定義好的 CSS variables。
+
+
+## 嘗試在 `<style>` 使用 `v-bind`
+
+原本想要嘗試使用 SFC 提供的功能，在 `<style>` 內使用 `v-bind` 來處理，結果發現透過這種方式傳進來的值會被加工處理，傳進子元件的值無法被當作 CSS variables。但是，若傳入顏色例如： `#FF0000` 或 `green` ，即可正常使用。
+
+父元件：
+
+```js
+<Header
+  :bg-color="'#FF0000'"
+/>
+```
+
+或是
+
+```js
+<Header
+  :bg-color="'green'"
+/>
+```
+
+子元件(Header.vue)：
+
+```js
+<script setup>
+const props = defineProps({
+  bgColor: { type: String, required: false },
+})
+</script>
+
+<template>
+    <div class="header"></div>
+</template>
+
+<style scoped>
+.header {
+  --header-bg-color: v-bind(bgColor);
+
+  width: 200px;
+  height: 80px;
+  // --header-bg-color 為欲指定的顏色，#000000 為找不到前者之預設顏色
+  background: var(--header-bg-color, #000000);
+}
+</style>
+```
+
+## 解決方案
+
+在跟同事討論和除蟲後，調整出一個適合目前專案和需求的方式，透過綁定該元素的 inline style，即可正常傳遞 CSS variables。
+
+父元件：
+
+```js
+  <Header
+    :bg-color="'--primary-200'"
+  />
+```
+
+子元件(Header.vue)：
+
+```js
+<script setup>
+const props = defineProps({
+  bgColor: { type: String, required: false, default: '--secondary-900' },
+})
+</script>
+
+<template>
+  <div class="header" :style="`--header-bg-color: var(${props.bgColor})`"></div>
+</template>
+
+<style scoped>
+.header {
+  width: 200px;
+  height: 80px;
+  // --header-bg-color 為欲指定的顏色，#000000 為找不到前者之預設顏色
+  background: var(--header-bg-color, #000000);
+}
+</style>
+```
+
+## 心得
+
+在查相關資料時，官方文件或是討論串多是建議在 `<style>` 內 `v-bind` 來處理 Vue3 + props + CSS 的相關問題。而在這次的開發中，剛好需要使用 CSS variables，並非直接指定色碼，所以碰到了一些問題，無法直接無腦套用官方做法，需要轉個彎才能抵達終點。
+
+
+## 參考資料
+
+- https://vuejs.org/guide/components/props.html 
+- https://vuejs.org/api/sfc-css-features.html#v-bind-in-css
+- https://vuejs.org/guide/essentials/class-and-style.html
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties

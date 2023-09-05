@@ -20,25 +20,31 @@ draft: false
 
 props 進子元件的 `String`：
 ```js
-const displayText1 = "Lorem ipsum dolor sit amet, \n\n consectetur adipiscing elit.";
-const displayText2 = `
-Lorem ipsum  
-Lorem ipsum
-`;
+<script setup>
+  const displayText1 = "Lorem ipsum dolor sit amet, \n\n consectetur adipiscing elit.";
+  const displayText2 = `
+  Lorem ipsum  
+  Lorem ipsum
+  `;
+</script>
 ```
 
 Vue template：
 ```html
-<pre>
-  {{ props.displayText }}
-</pre>
+<template>
+  <pre>
+    {{ props.displayText }}
+  </pre>
+</template>
 ```
 
 CSS 屬性：
 ```css
-pre {
-  white-space: pre-line;
-}
+<style scoped>
+  pre {
+    white-space: pre-line;
+  }
+</style>
 ```
 
 ## 心得

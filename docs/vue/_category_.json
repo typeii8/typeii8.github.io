@@ -2,6 +2,7 @@
   "label": "Vue",
   "position": 3,
   "link": {
-    "type": "generated-index"
+    "type": "generated-index",
+    "description": "使用 Vue3 開發前端專案時遇到的問題和排解紀錄"
   }
 }

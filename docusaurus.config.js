@@ -54,7 +54,8 @@ const config = {
           customCss: require.resolve('./src/css/custom.css'),
         },
         sitemap: {
-          changefreq: 'always'
+          changefreq: 'daily',
+          filename: 'sitemap.xml'
         },
         gtag: {
           trackingID: 'G-6GGVD984B6'
@@ -67,6 +68,12 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       /** You can configure a default image that will be used for your meta tag, */
+      metadata: [
+        // TODO: 新增敘述, 新增 sitemap plugin
+        // {name: 'description', content: ''},
+        {name: 'keywords', content: 'f2e, blog, vue3, css, lwc, salesforce, uiux'},
+        {name: 'author', content: 'Zoe Huang'},
+      ],
       image: 'img/gizmo.png',
       colorMode: {
         defaultMode: 'dark',
@@ -106,6 +113,10 @@ const config = {
               {
                 label: 'Vue',
                 to: '/docs/category/vue',
+              },
+              {
+                label: 'LWC',
+                to: '/docs/category/lwc',
               },
               // {
               //   label: 'Optimization',

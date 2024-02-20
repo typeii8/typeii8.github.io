@@ -12,10 +12,15 @@ draft: false
 
 ## 前提
 
-專案結構在使用 Composition API `<script setup>` 的寫法，在某個 Component 的切換想要搭配 `<Transition>`，進而達成切換 Component 的時候產生轉場動畫。
+專案結構在使用 Composition API `<script setup>` 的寫法，在 Component 內進行切換並搭配 `<Transition>`，進而達成切換 Component 的同時產生轉場動畫。
 
-不過，這個原本在 Options API 可正常運作的寫法，改成 `<script setup>` 後便無法正常動作，於是開始進行排解。
+不過，原本在 Options API 可正常運作的寫法，改成 `<script setup>` 後便無法正常動作，於是開始問題排解。
 
+## 解決方案
+
+切換 card 的 function `cardFlip()` 加上 `markRaw` 即可正常動作
+
+根據官方文件表示，此用法的作用為 "Marks an object so that it will never be converted to a proxy. Returns the object itself."
 
 ```js
 <script setup>
@@ -35,6 +40,9 @@ function cardFlip() {
   }
 }
 </script>
+```
+
+```js
 <template>
   ...
   <Transition name="fade" mode="out-in">
@@ -42,43 +50,6 @@ function cardFlip() {
   </Transition>
   
 </template>
-```
-
-
-
-
-## 解決方案
-
-
-父元件：
-
-```js
-  <Header
-    :bg-color="'--primary-200'"
-  />
-```
-
-子元件(Header.vue)：
-
-```js
-<script setup>
-const props = defineProps({
-  bgColor: { type: String, required: false, default: '--secondary-900' },
-})
-</script>
-
-<template>
-  <div class="header" :style="`--header-bg-color: var(${props.bgColor})`"></div>
-</template>
-
-<style scoped>
-.header {
-  width: 200px;
-  height: 80px;
-  // --header-bg-color 為欲指定的顏色，#000000 為找不到前者之預設顏色
-  background: var(--header-bg-color, #000000);
-}
-</style>
 ```
 
 ## 心得

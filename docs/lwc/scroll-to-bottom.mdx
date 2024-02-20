@@ -1,0 +1,80 @@
+---
+sidebar_position: 1
+id: scroll-to-bottom
+title: lwc 網頁元件捲到最底
+tags:
+  - Salesforce
+  - Lightning Web Components
+  - lwc
+draft: false
+last_update:
+  date: 2024-02-20
+---
+
+# LWC 開發筆記
+
+## 前提
+
+在 Salesforce 內開發 lwc 時遇到一個情境：每當資料更新時，期望該網頁元件會自動往下捲到最底。故需先選到指定的網頁元件，然後自動捲到最底。
+
+
+## 實踐方法
+
+### scroll.html
+
+```js
+<template>
+  <div class="dialog-body">
+    ...
+  </div>
+</template>
+```
+
+### scroll.js
+
+使用 `this.template.querySelector` 選擇欲操作的 DOM
+
+因為要捲到最底部，所以 `scrollTop` 的高度是該 DOM 的 `scrollHeight`
+
+```js
+  handleDialogScrolltoTop() {
+    const dialogBody = this.template.querySelector(".dialog-body");
+    dialogBody.scrollTop = dialogBody.scrollHeight;
+  }
+```
+
+
+## 同場加映：如何 focus 特定元件
+
+概念和 scroll 類似，需要先選定要 focus 的元件，然後在期望的時機點觸發 focus
+
+### focus.html
+
+```js
+<template>
+  <lightning-textarea type="text" class="textarea answer-textarea" value={messageInput} onchange={messageInputHandleChange}>
+  </lightning-textarea>
+</template>
+```
+### focus.js
+
+使用 `this.template.querySelector` 選擇欲操作的 textarea
+
+```js
+  focusTextarea() {
+    const ansTextarea = this.template.querySelector(".answer-textarea");
+    ansTextarea.focus();
+  }
+```
+
+## 心得
+
+因為在 Salesforce 的框架內，故有些寫法會和原生不太一樣需要習慣，而像是在作自動 scroll 或是 focus 時有可能會遇到資料同步的順序問題，這時再針對自己想要的流程加上 ayns/await 或 Promise 即可。
+
+
+## 參考資料
+
+相關文件可參考：
+
+- https://developer.salesforce.com/docs/component-library/overview/components
+- https://salesforce.stackexchange.com/questions/284409/a-button-to-scroll-at-the-top-of-the-page-in-lwc

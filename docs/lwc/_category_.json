@@ -1,0 +1,8 @@
+{
+  "label": "LWC",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "如何在 Salesforce 的框架內，進行 Lightning Web Components 之開發"
+  }
+}

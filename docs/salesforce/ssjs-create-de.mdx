@@ -1,0 +1,81 @@
+---
+sidebar_position: 2
+id: ssjs-create-de
+title: 應用 SSJS 在 Automation Studio 建立 Data Extension
+tags:
+  - Salesforce
+  - Data extension
+  - SSJS
+  - Automation Studio
+draft: false
+last_update:
+  date: 2024-07-01
+---
+
+# 應用 SSJS 在 Automation Studio 建立 Data Extension
+
+## 前提
+
+在執行專案的過程中，遇到需要創建大量的 Data Extension，因此想要透過程式的手段快速批次建立 Data Extension。
+
+## 實踐方法
+
+因為專案中遇到有大量且欄位多的 Data Extension 需要創建，查找了官方文件和網路上的資料，發現可以透過 SSJS (Server-Side JavaScript) 來執行程式碼，進而達到建立 Data Extension。
+
+執行方法如下：
+
+登入 SFMC -> Journey Builder -> Automation Studio -> Activities -> Script -> Create Script
+
+在 Script 中貼上以下範例程式碼，透過 `DataExtension.Add()` 方法來建立 Data Extension。
+
+### Script
+
+```js
+<script runat="server">
+  Platform.Load("core", "1.1");
+
+  var deConfig = {
+    "CustomerKey": GUID(),
+    "Name": "TestDE",
+    "Fields": [
+      {
+        "Name": "Id",
+        "FieldType": "Number",
+        "IsPrimaryKey": true,
+        "IsRequired": true
+      },
+      {
+        "Name": "Email",
+        "FieldType": "Text",
+        "MaxLength": 255
+      },
+      {
+        "Name": "SubscriptionStatus",
+        "FieldType": "Boolean",
+        "DefaultValue": true
+      }
+    ]
+  };
+
+  try {
+    DataExtension.Add(deConfig);
+    Write("Data Extension created successfully: " + deConfig.Name);
+  } catch (err) {
+    Write("Error creating Data Extension: " + err.message);
+  }
+</script>
+```
+
+
+## 心得
+
+因為專案需求，起初花了一些時間查找官方文件中關於 SSJS 的資料，覺得網頁上的說明不是十分清楚，文件上的範例程式碼也沒辦法成功被執行。於是額外查找了一些其他網站上的資料，才得以成功執行程式碼。原本自己的開發習慣是以官方文件為主，但這次的實作讓我覺得有時候也可以試著多方查找第三方資料，參考別人的實作經驗，才能更快速地解決問題。
+
+
+## 參考資料
+
+相關文件可參考：
+
+- [SSJS Docs](https://www.ssjsdocs.xyz/)
+- [SSJS Intro](https://mateuszdabrowski.pl/docs/category/ssjs/)
+- [SFMC Official SSJS Intro](https://developer.salesforce.com/docs/marketing/marketing-cloud/guide/ssjs_serverSideJavaScript.html)

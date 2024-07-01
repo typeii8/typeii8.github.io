@@ -73,7 +73,7 @@ const config = {
       metadata: [
         // TODO: 新增敘述, 新增 sitemap plugin
         // {name: 'description', content: ''},
-        {name: 'keywords', content: 'f2e, blog, vue3, css, lwc, salesforce, uiux'},
+        {name: 'keywords', content: 'f2e, blog, vue3, css, javascript, salesforce, uiux'},
         {name: 'author', content: 'Zoe Huang'},
       ],
       image: 'img/gizmo.png',
@@ -117,8 +117,8 @@ const config = {
                 to: '/docs/category/vue',
               },
               {
-                label: 'LWC',
-                to: '/docs/category/lwc',
+                label: 'Salesforce',
+                to: '/docs/category/salesforce',
               },
               // {
               //   label: 'Optimization',

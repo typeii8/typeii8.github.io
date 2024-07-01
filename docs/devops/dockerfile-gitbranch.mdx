@@ -1,0 +1,38 @@
+---
+sidebar_position: 1
+id: dockerfile-gitbranch
+title: Dockerfile 中如何根據 Git Branch 名稱執行相對應的命令 
+tags:
+  - Docker
+  - git
+  - DevOps
+draft: true
+last_update:
+  date: 2024-07-01
+---
+
+# Dockerfile 中如何根據 Git Branch 名稱執行相對應的命令
+
+在 Dockerfile 進行判斷，根據 Git Branch 名稱，執行相對應的命令。
+
+## 實踐方法
+
+會有這個需求是因為在專案的配置上，部署有所謂權限的問題，所以我們只能夠編輯 dockerfile，而不能夠直接在 Container 內執行命令。
+
+### 1. 安裝 SonarQube
+### 2. 安裝 SonarScanner
+### 3. 進行程式碼掃描
+### 4. 匯出 PDF 報告
+
+tbc
+
+
+## 心得
+
+
+## 參考資料
+
+相關文件可參考：
+
+- [SonarQube Community Edition 9.9 LTS 使用 sonar-pdf-report 匯出 PDF 報告](https://ithelp.ithome.com.tw/articles/10340887)
+- [onarQube Community Edition 使用 SonarQube CNES Report Plugin 匯出 PDF 報告](https://hackmd.io/@dh46tw/sonarqube-community-cnes-report-plugin)

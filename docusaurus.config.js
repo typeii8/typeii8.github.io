@@ -60,7 +60,10 @@ const config = {
           filename: 'sitemap.xml'
         },
         gtag: {
-          trackingID: 'G-6GGVD984B6'
+          trackingID: 'G-GJBWN50N3V'
+        },
+        googleTagManager: {
+          containerId: 'GTM-P62NWR',
         }
       }),
     ],

@@ -120,10 +120,10 @@ const config = {
                 label: 'Salesforce',
                 to: '/docs/category/salesforce',
               },
-              // {
-              //   label: 'Optimization',
-              //   to: '/docs/category/optimization',
-              // }
+              {
+                label: 'DevOps',
+                to: '/docs/category/devops',
+              }
             ],
           },
           {

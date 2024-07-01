@@ -1,0 +1,41 @@
+---
+sidebar_position: 1
+id: sonarqube-report
+title: Sonarqube 進行程式碼品質檢測並輸出報告
+tags:
+  - Sonarqube
+  - Security
+  - Code Quality
+  - DevOps
+draft: false
+last_update:
+  date: 2024-06-20
+---
+
+# Sonarqube 進行程式碼品質檢測並輸出報告
+
+要如何應用 SonarQube 進行專案的程式碼掃描健檢，並且產出相對應的報告供查閱，這是我前陣子遇到的一個需求，以下將介紹如何實踐。
+
+
+## 實踐方法
+
+### 1. 安裝 SonarQube
+### 2. 安裝 SonarScanner
+### 3. 進行程式碼掃描
+### 4. 匯出 PDF 報告
+
+tbc
+
+
+## 心得
+
+因為時程考量和預算問題，所以執行這個項目的時候便決定要使用 Community 版，而不是功能齊全的 Enterprise 版本。當初直接在官網下載了最新版本的 SonarQube Community 10.x 版本架起來用，介面設計和閱讀舒適度都覺得十分順暢，對於問題點的解說和建議，甚至是自我檢測方法和建議修改方案，都有淺顯易懂的詳細說明，可以讓人快速找到問題點並且解決。
+
+可惜 Community 10.x 版本找到的 PDF 插件匯出的報告完整度不夠。後續查找其他文獻，又安裝了 SonarQube Community 9.x 版本並搭配相容之套件進行報告匯出，雖然 9.x 版本的 SonarQube 介面略顯年代感，不過匯出 PDF 報告的完整度高不少，也有諸多格式可供選擇，所以最後選擇兩個版本並存，10.x 版本用來進行程式碼檢測，9.x 版本用來匯出 PDF 報告。
+
+## 參考資料
+
+相關文件可參考：
+
+- [SonarQube Community Edition 9.9 LTS 使用 sonar-pdf-report 匯出 PDF 報告](https://ithelp.ithome.com.tw/articles/10340887)
+- [onarQube Community Edition 使用 SonarQube CNES Report Plugin 匯出 PDF 報告](https://hackmd.io/@dh46tw/sonarqube-community-cnes-report-plugin)

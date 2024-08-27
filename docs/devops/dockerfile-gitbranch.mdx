@@ -1,38 +1,96 @@
 ---
 sidebar_position: 1
 id: dockerfile-gitbranch
-title: Dockerfile 中如何根據 Git Branch 名稱執行相對應的命令 
+title: Docker 如何根據 Git Branch 名稱執行相對應的命令(待調整)
 tags:
   - Docker
   - git
   - DevOps
 draft: true
 last_update:
-  date: 2024-07-01
+  date: 2024-08-27
 ---
 
-# Dockerfile 中如何根據 Git Branch 名稱執行相對應的命令
+# 如何根據 Git Branch 名稱執行相對應的命令
 
-在 Dockerfile 進行判斷，根據 Git Branch 名稱，執行相對應的命令。
+專案使用 dockerfile 進行設定，部屬步驟則是使用 github action 的 .yml，.yml 包含了 docker build 和 docker push  等步驟。
+
+面臨的需求是要根據環境的不同， docker image 傳入相對應的參數，並執行相對應的 script。
 
 ## 實踐方法
 
-會有這個需求是因為在專案的配置上，部署有所謂權限的問題，所以我們只能夠編輯 dockerfile，而不能夠直接在 Container 內執行命令。
+我的實踐方式是根據 git branch name作為判斷環境的依據，分別為 `stage` 和 `production`。
 
-### 1. 安裝 SonarQube
-### 2. 安裝 SonarScanner
-### 3. 進行程式碼掃描
-### 4. 匯出 PDF 報告
+在 dockerfile 中，先使用 `ARG` 創建一個環境參數 `BUILD_ENV`
 
-tbc
+
+### Script
+
+dockerfile
+
+```
+FROM node:latest
+ 
+# make the 'app' folder the current working directory
+WORKDIR /app
+
+# copy both 'package.json' and 'package-lock.json' (if available)
+COPY package*.json ./
+
+# install project dependencies leaving out dev dependencies
+RUN npm cache clean --force
+RUN npm install  
+
+# Update caniuse-lite database
+RUN npx browserslist@latest --update-db
+# copy project files and folders to the current working directory (i.e. 'app' folder)
+COPY . .
+ 
+# Pass the BUILD_ENV argument
+ARG BUILD_ENV
+ENV BUILD_ENV=$BUILD_ENV
+
+# Conditionally run the build commands based on BUILD_ENV: stage/true
+RUN if [ "$BUILD_ENV" = "stage" ]; then \
+      cp .env.development .env; \
+      npm run build:dev; \
+    else \
+      cp .env.production .env; \
+      npm run build; \
+    fi
+
+EXPOSE 3000
+
+CMD ["sh", "-c", "if [ \"$BUILD_ENV\" = 'stage' ]; then npm run start:dev; else npm run start; fi"]
+```
+
+github action yml
+```
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+        # checkout the repo
+        - name: 'Checkout GitHub Action'
+          uses: actions/checkout@v3
+
+         # building docker image    
+        - name: Build Image
+          if: success()
+          run: |
+           BUILD_ENV=${{ github.ref_name == 'prod' || 'stage' }}
+           echo "Building environment: $BUILD_ENV"
+           docker build . --build-arg BUILD_ENV=$BUILD_ENV  -t ${{ secrets.ACR_LOGIN_SERVER }}/${{ github.event.repository.name }}-${{ github.head_ref || github.ref_name }}:${{ github.sha }}
+```
+
 
 
 ## 心得
 
+因為原先專案的結構有著先天性的限制，所以在網路上查到一些作法沒辦法實現在現行架構內，最後決定用這個比較迂迴的方式完成目標。先根據 github branch name 來判斷環境，並且創建一個參數將其傳到 docker 內，當作判斷條件使用。
+
+團隊內剛好沒有人有類似經驗，所以自己靠著一來一往的測試和找錯，最後完成這個調整，也算是對於 docker 和 github action 有了比較進階的認識。
 
 ## 參考資料
 
-相關文件可參考：
-
-- [SonarQube Community Edition 9.9 LTS 使用 sonar-pdf-report 匯出 PDF 報告](https://ithelp.ithome.com.tw/articles/10340887)
-- [onarQube Community Edition 使用 SonarQube CNES Report Plugin 匯出 PDF 報告](https://hackmd.io/@dh46tw/sonarqube-community-cnes-report-plugin)
+- [How to use Docker Build Args and Environment Variables](https://refine.dev/blog/docker-build-args-and-env-vars/)
